@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_main"
+    app:startDestination="@id/feedFragment">
+
+    <fragment
+        android:id="@+id/eventFragment"
+        android:name="com.example.nework.ui.EventFragment"
+        android:label="EventFragment"
+        tools:layout="@layout/fragment_event">
+        <action
+            android:id="@+id/action_eventFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_wallFragment"
+            app:destination="@id/wallFragment" />
+        <action
+            android:id="@+id/action_eventFragment_to_myWallFragment"
+            app:destination="@id/myWallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/jobsFragment"
+        android:name="com.example.nework.ui.JobsFragment"
+        android:label="JobsFragment"
+        tools:layout="@layout/fragment_jobs"/>
+    <fragment
+        android:id="@+id/wallFragment"
+        android:name="com.example.nework.ui.WallFragment"
+        android:label="WallFragment"
+        tools:layout="@layout/fragment_wall">
+        <action
+            android:id="@+id/action_wallFragment_to_jobsFragment"
+            app:destination="@id/jobsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/feedFragment"
+        android:name="com.example.nework.ui.FeedFragment"
+        android:label="FeedFragment"
+        tools:layout="@layout/fragment_feed">
+        <action
+            android:id="@+id/action_feedFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_wallFragment"
+            app:destination="@id/wallFragment" />
+        <action
+            android:id="@+id/action_feedFragment_to_myWallFragment"
+            app:destination="@id/myWallFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/myWallFragment"
+        android:name="com.example.nework.ui.MyWallFragment"
+        android:label="MyWallFragment"
+        tools:layout="@layout/fragment_my_wall">
+        <action
+            android:id="@+id/action_myWallFragment_to_eventFragment"
+            app:destination="@id/eventFragment" />
+        <action
+            android:id="@+id/action_myWallFragment_to_feedFragment"
+            app:destination="@id/feedFragment" />
+        <action
+            android:id="@+id/action_myWallFragment_to_newPostFragment"
+            app:destination="@id/newPostFragment" />
+        <action
+            android:id="@+id/action_myWallFragment_to_myJobsFragment"
+            app:destination="@id/myJobsFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newPostFragment"
+        android:name="com.example.nework.ui.NewPostFragment"
+        android:label="NewPostFragment"
+        tools:layout="@layout/fragment_new_post"/>
+    <fragment
+        android:id="@+id/myJobsFragment"
+        android:name="com.example.nework.ui.MyJobsFragment"
+        android:label="MyJobsFragment"
+        tools:layout="@layout/fragment_my_jobs">
+        <action
+            android:id="@+id/action_myJobsFragment_to_newJobFragment"
+            app:destination="@id/newJobFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/newJobFragment"
+        android:name="com.example.nework.ui.NewJobFragment"
+        android:label="NewJobFragment"
+        tools:layout="@layout/fragment_new_job"/>
+</navigation>
