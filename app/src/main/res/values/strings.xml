@@ -12,4 +12,5 @@
     <string name="main">Main</string>
     <string name="events">Events</string>
     <string name="my_wall">My wall</string>
+    <string name="menu_save">Save</string>
 </resources>

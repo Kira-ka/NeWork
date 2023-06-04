@@ -13,4 +13,5 @@
     <string name="main">Главная</string>
     <string name="events">События</string>
     <string name="my_wall">Моя стена</string>
+    <string name="menu_save">Сохранить</string>
 </resources>
