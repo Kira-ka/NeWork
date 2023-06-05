@@ -72,7 +72,6 @@
         android:layout_marginStart="@dimen/common_spacing"
         android:layout_marginTop="@dimen/common_spacing"
         android:layout_marginEnd="@dimen/common_spacing"
-
         android:autoLink="web"
         android:linksClickable="true"
         app:layout_constraintEnd_toEndOf="parent"

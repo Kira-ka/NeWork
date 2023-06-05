@@ -1,6 +1,6 @@
 package com.example.nework.dto
 
-data class Wall(
+data class Post(
     val id: Int,
     val authorId: String,
     val author: String,
@@ -8,7 +8,7 @@ data class Wall(
     val authorJob: String? = null,
     val content: String,
     val published: String,
-    val coords: Coordinates? = null,
+    val cords: Coordinates? = null,
     val likeOwnerIds: List<Int>,
     val likedByMe: Boolean,
     val mentionIds: List<Int>,

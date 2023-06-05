@@ -1,7 +1,7 @@
-package com.example.nework
+package com.example.nework.ui
 
 import androidx.appcompat.app.AppCompatActivity
-import android.os.Bundle
+import com.example.nework.R
 
 class MainActivity : AppCompatActivity(R.layout.activity_main) {
 

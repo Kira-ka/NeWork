@@ -1,6 +1,6 @@
 package com.example.nework.dto
 
-data class Jobs(
+data class Job(
     val id: Int,
     val name: String,
     val position: String,

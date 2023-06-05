@@ -3,7 +3,7 @@ package com.example.nework.dto
 import com.example.nework.enumeration.AttachmentType
 import com.example.nework.enumeration.TypeOffOnLine
 
-data class Events(
+data class Event(
     val id: Int,
     val authorId: String,
     val author: String,
@@ -12,7 +12,7 @@ data class Events(
     val content: String,
     val datetime: String,
     val published: String,
-    val coords: Coordinates? = null,
+    val cords: Coordinates? = null,
     val typeOffOnLine: TypeOffOnLine,
     val likeOwnerIds: List<Int>,
     val likedByMe: Boolean,
@@ -37,5 +37,5 @@ data class UserPreview(
 
 data class 	Attachment(
     val url: String,
-    val type: AttachmentType?
+    val type: AttachmentType
 )
