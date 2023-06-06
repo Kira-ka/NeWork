@@ -4,7 +4,7 @@ import androidx.room.Entity
 import androidx.room.PrimaryKey
 import kotlinx.coroutines.Job
 
-@Entity
+@Entity(tableName = "jobs")
 data class JobEntity(
     @PrimaryKey(true)
     val id: Int,

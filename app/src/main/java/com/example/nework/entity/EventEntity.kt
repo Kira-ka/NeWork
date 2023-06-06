@@ -3,11 +3,10 @@ package com.example.nework.entity
 import androidx.room.Embedded
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import com.example.nework.dto.Coordinates
 import com.example.nework.dto.Event
 import com.example.nework.enumeration.TypeOffOnLine
 
-@Entity
+@Entity(tableName = "events")
 class EventEntity(
     @PrimaryKey(true)
     val id: Int,
