@@ -2,8 +2,8 @@ package com.example.nework.dto
 
 import com.example.nework.enumeration.AttachmentType
 
-data class PostMinimal(
-    val id: Int,
+data class PostMinimal  (
+    override val id: Int,
     val authorId: String,
     val author: String,
     val authorAvatar: String? = null,
@@ -13,4 +13,4 @@ data class PostMinimal(
     val url: String? = null,
     val type: AttachmentType? = null,
     val ownedByMe: Boolean
-)
+) : Minimal

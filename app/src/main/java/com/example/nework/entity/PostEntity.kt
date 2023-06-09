@@ -116,3 +116,6 @@ data class UserPreviewEmbedded(
         fun fromDto(users: UserPreview) = UserPreviewEmbedded(users.name, users.avatar)
     }
 }
+
+fun List<Post>.toEntity(): List<PostEntity> = map(PostEntity::fromDto)
+

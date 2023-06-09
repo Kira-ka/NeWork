@@ -2,6 +2,7 @@ package com.example.nework.dao
 
 import androidx.room.Dao
 import androidx.room.Query
+import com.example.nework.dto.Job
 import com.example.nework.entity.JobEntity
 import kotlinx.coroutines.flow.Flow
 
@@ -9,7 +10,7 @@ import kotlinx.coroutines.flow.Flow
 abstract class JobDao : BaseDao<JobEntity> {
 
     @Query("SELECT * FROM jobs ORDER BY id DESC")
-    abstract fun getAll(): Flow<List<JobEntity>>
+    abstract fun getAll(): Flow<List<Job>>
 
     @Query("DELETE FROM jobs WHERE id = :id")
     abstract suspend fun deleteJobById(id: Int)

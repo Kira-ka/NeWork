@@ -27,6 +27,7 @@
         android:singleLine="true"
         android:textSize="@dimen/header"
         app:layout_constraintEnd_toStartOf="@id/menu"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@id/avatar"
         app:layout_constraintTop_toTopOf="@id/avatar"
         tools:text="@tools:sample/full_names" />

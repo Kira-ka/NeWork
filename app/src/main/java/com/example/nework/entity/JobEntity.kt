@@ -2,7 +2,7 @@ package com.example.nework.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey
-import kotlinx.coroutines.Job
+import com.example.nework.dto.Job
 
 @Entity(tableName = "jobs")
 data class JobEntity(
@@ -21,3 +21,5 @@ data class JobEntity(
             JobEntity(job.id, job.name, job.position, job.start, job.finish, job.link)
     }
 }
+
+fun List<Job>.toEntity(): List<JobEntity> = map(JobEntity::fromDto)

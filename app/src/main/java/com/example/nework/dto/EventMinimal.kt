@@ -3,7 +3,7 @@ package com.example.nework.dto
 import com.example.nework.enumeration.AttachmentType
 
 data class EventMinimal(
-    val id: Int,
+    override val id: Int,
     val authorId: String,
     val author: String,
     val authorAvatar: String? = null,
@@ -15,4 +15,4 @@ data class EventMinimal(
     val url: String? = null,
     val type: AttachmentType? = null,
     val ownedByMe: Boolean
-)
+) : Minimal
