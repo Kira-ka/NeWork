@@ -35,7 +35,7 @@ data class UserPreview(
     val avatar: String? = null
 )
 
-data class 	Attachment(
+data class Attachment(
     val url: String,
     val type: AttachmentType
 )

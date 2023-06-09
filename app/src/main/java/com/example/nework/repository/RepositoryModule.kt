@@ -12,11 +12,11 @@ abstract class RepositoryModule {
 
     @Binds
     @Singleton
-    abstract fun bindPostRepository(impl: PostRepositoryImpl): PostEventRepository
+    abstract fun bindPostRepository(impl: PostRepositoryImpl): PostRepository
 
     @Binds
     @Singleton
-    abstract fun bindEventRepository(impl: EventRepositoryImpl): PostEventRepository
+    abstract fun bindEventRepository(impl: EventRepositoryImpl): PostRepository
 
     @Binds
     @Singleton

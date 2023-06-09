@@ -23,7 +23,7 @@ class PostRepositoryImpl @Inject constructor(
     private val postDao: PostDao,
     private val apiService: ApiService,
     private val mediaService: MediaService
-) : PostEventRepository {
+) : PostRepository {
     override val data = postDao.getPostsMinimal().flowOn(Dispatchers.Default)
 
     override suspend fun getAll() {
@@ -38,6 +38,8 @@ class PostRepositoryImpl @Inject constructor(
             throw AppError.from(e)
         }
     }
+
+
 
     override suspend fun save(post: Post, upload: MediaUpload?) {
         try {
@@ -68,10 +70,11 @@ class PostRepositoryImpl @Inject constructor(
                 upload.file.name,
                 upload.file.asRequestBody()
             )
-            val respons = mediaService.upload(media)
-            if (!respons.isSuccessful) {
-                throw ApiError(respons.code(), respons.message())
+            val response = mediaService.upload(media)
+            if (!response.isSuccessful) {
+                throw ApiError(response.code(), response.message())
             }
+            return response.body() ?: throw ApiError(response.code(), response.message())
         } catch (e: Throwable) {
             throw AppError.from(e)
         }
