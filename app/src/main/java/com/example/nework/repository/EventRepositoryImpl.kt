@@ -7,6 +7,7 @@ import com.example.nework.dto.Attachment
 import com.example.nework.dto.Event
 import com.example.nework.dto.Media
 import com.example.nework.dto.MediaUpload
+import com.example.nework.entity.EventEntity
 import com.example.nework.entity.toEntity
 import com.example.nework.enumeration.AttachmentType
 import com.example.nework.error.ApiError
@@ -39,6 +40,42 @@ class EventRepositoryImpl @Inject constructor(
         }
     }
 
+    override suspend fun likeById(id: Int) {
+        try {
+            val response = apiService.likeByIdEvent(id)
+            if(!response.isSuccessful){
+                throw ApiError(response.code(), response.message())
+            }
+            eventDao.likedEventById(id)
+        } catch (e: Throwable) {
+            AppError.from(e)
+        }
+    }
+
+    override suspend fun dislikeById(id: Int) {
+        try {
+            val response = apiService.dislikeByIdEvent(id)
+            if(!response.isSuccessful){
+                throw ApiError(response.code(), response.message())
+            }
+            eventDao.likedEventById(id)
+        } catch (e: Throwable) {
+            AppError.from(e)
+        }
+    }
+
+    override suspend fun removeById(id: Int) {
+        try {
+            val response = apiService.deleteEvent(id)
+            if (!response.isSuccessful) {
+                throw ApiError(response.code(), response.message())
+            }
+            eventDao.deleteEventById(id)
+        } catch (e: Throwable) {
+            AppError.from(e)
+        }
+    }
+
 
     override suspend fun save(event: Event, upload: MediaUpload?) {
         try {
@@ -49,17 +86,14 @@ class EventRepositoryImpl @Inject constructor(
                 event.copy(attachment = Attachment(it.id, AttachmentType.IMAGE))
             }
             val response = apiService.saveEvent(eventWithAttachment ?: event)
+            if (!response.isSuccessful) {
+                throw ApiError(response.code(), response.message())
+            }
+            val body = response.body() ?: throw ApiError(response.code(), response.message())
+            eventDao.insert(EventEntity.fromDto(body))
         } catch (e: Throwable) {
             throw AppError.from(e)
         }
-    }
-
-    override suspend fun removeById(id: Long) {
-        TODO("Not yet implemented")
-    }
-
-    override suspend fun likeById(id: Long) {
-        TODO("Not yet implemented")
     }
 
     override suspend fun upload(upload: MediaUpload): Media {

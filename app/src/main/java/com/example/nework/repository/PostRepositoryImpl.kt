@@ -7,6 +7,7 @@ import com.example.nework.dto.Attachment
 import com.example.nework.dto.Media
 import com.example.nework.dto.MediaUpload
 import com.example.nework.dto.Post
+import com.example.nework.entity.PostEntity
 import com.example.nework.entity.toEntity
 import com.example.nework.enumeration.AttachmentType
 import com.example.nework.error.ApiError
@@ -40,7 +41,6 @@ class PostRepositoryImpl @Inject constructor(
     }
 
 
-
     override suspend fun save(post: Post, upload: MediaUpload?) {
         try {
             val postWithAttachment = upload?.let {
@@ -50,17 +50,50 @@ class PostRepositoryImpl @Inject constructor(
                 post.copy(attachment = Attachment(it.id, AttachmentType.IMAGE))
             }
             val response = apiService.savePost(postWithAttachment ?: post)
+            if (!response.isSuccessful) {
+                throw ApiError(response.code(), response.message())
+            }
+            val body = response.body() ?: throw ApiError(response.code(), response.message())
+            postDao.insert(PostEntity.fromDto(body))
         } catch (e: Throwable) {
             throw AppError.from(e)
         }
     }
 
-    override suspend fun removeById(id: Long) {
-        TODO("Not yet implemented")
+    override suspend fun removeById(id: Int) {
+        try {
+            val response = apiService.deletePost(id)
+            if (!response.isSuccessful) {
+                throw ApiError(response.code(), response.message())
+            }
+            postDao.deletePostById(id)
+        } catch (e: Throwable) {
+            AppError.from(e)
+        }
     }
 
-    override suspend fun likeById(id: Long) {
-        TODO("Not yet implemented")
+    override suspend fun likeById(id: Int) {
+        try {
+            val response = apiService.likeByIdPost(id)
+            if(!response.isSuccessful){
+                throw ApiError(response.code(), response.message())
+            }
+            postDao.likedPostById(id)
+        } catch (e: Throwable) {
+            AppError.from(e)
+        }
+    }
+
+    override suspend fun dislikeById(id: Int) {
+        try {
+            val response = apiService.dislikeByIdPost(id)
+            if(!response.isSuccessful){
+                throw ApiError(response.code(), response.message())
+            }
+            postDao.likedPostById(id)
+        } catch (e: Throwable) {
+            AppError.from(e)
+        }
     }
 
     override suspend fun upload(upload: MediaUpload): Media {

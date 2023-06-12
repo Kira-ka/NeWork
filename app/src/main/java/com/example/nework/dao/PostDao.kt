@@ -20,5 +20,5 @@ abstract class PostDao : BaseDao<PostEntity> {
     abstract suspend fun updatePostById(id: Int, content: String, url: String, type: AttachmentType)
 
     @Query("UPDATE posts SET likedByMe = CASE WHEN likedByMe THEN 0 ELSE 1 END WHERE id = :id")
-    abstract suspend fun likedPostByMe(id: Int)
+    abstract suspend fun likedPostById(id: Int)
 }

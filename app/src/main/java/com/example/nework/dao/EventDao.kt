@@ -2,7 +2,6 @@ package com.example.nework.dao
 
 import androidx.room.Dao
 import androidx.room.Query
-import com.example.nework.dto.Event
 import com.example.nework.dto.EventMinimal
 import com.example.nework.entity.EventEntity
 import com.example.nework.enumeration.AttachmentType
@@ -27,5 +26,5 @@ abstract class EventDao : BaseDao<EventEntity> {
     )
 
     @Query("UPDATE events SET likedByMe = CASE WHEN likedByMe THEN 0 ELSE 1 END WHERE id = :id")
-    abstract suspend fun likedEventByMe(id: Int)
+    abstract suspend fun likedEventById(id: Int)
 }
