@@ -4,7 +4,7 @@ import com.example.nework.enumeration.AttachmentType
 import com.example.nework.enumeration.TypeOffOnLine
 
 data class Event(
-    val id: Int,
+    val id: Long,
     val authorId: String,
     val author: String,
     val authorAvatar: String? = null,

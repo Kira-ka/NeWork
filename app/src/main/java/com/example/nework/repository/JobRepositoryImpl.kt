@@ -46,7 +46,7 @@ class JobRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun removeById(id: Int) {
+    override suspend fun removeById(id: Long) {
         try {
             val response = apiService.deleteJob(id)
             if (!response.isSuccessful) {

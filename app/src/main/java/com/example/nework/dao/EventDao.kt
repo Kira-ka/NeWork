@@ -14,11 +14,11 @@ abstract class EventDao : BaseDao<EventEntity> {
     abstract fun getEventMinimal(): Flow<List<EventMinimal>>
 
     @Query("DELETE FROM events WHERE id =:id")
-    abstract suspend fun deleteEventById(id: Int)
+    abstract suspend fun deleteEventById(id: Long)
 
     @Query("UPDATE events SET content = :content, datetime = :datetime, url = :url, type = :type WHERE id = :id")
     abstract suspend fun updateEventById(
-        id: Int,
+        id: Long,
         content: String,
         datetime: String,
         url: String,
@@ -26,5 +26,5 @@ abstract class EventDao : BaseDao<EventEntity> {
     )
 
     @Query("UPDATE events SET likedByMe = CASE WHEN likedByMe THEN 0 ELSE 1 END WHERE id = :id")
-    abstract suspend fun likedEventById(id: Int)
+    abstract suspend fun likedEventById(id: Long)
 }

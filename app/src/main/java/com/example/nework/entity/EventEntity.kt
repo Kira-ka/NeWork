@@ -9,7 +9,7 @@ import com.example.nework.enumeration.TypeOffOnLine
 @Entity(tableName = "events")
 class EventEntity(
     @PrimaryKey(true)
-    val id: Int,
+    val id: Long,
     val authorId: String,
     val author: String,
     val authorAvatar: String? = null,

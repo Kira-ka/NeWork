@@ -5,6 +5,7 @@ import com.example.nework.dto.Event
 import com.example.nework.dto.Job
 import com.example.nework.dto.Media
 import com.example.nework.dto.Post
+import com.example.nework.dto.Token
 import okhttp3.Interceptor
 import okhttp3.MultipartBody
 import okhttp3.OkHttpClient
@@ -13,6 +14,8 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.Body
 import retrofit2.http.DELETE
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Multipart
 import retrofit2.http.POST
@@ -48,13 +51,13 @@ interface ApiService {
     suspend fun saveEvent(@Body event: Event): Response<Event>
 
     @DELETE("events/{id}")
-    suspend fun deleteEvent(@Path("id") id: Int): Response<Event>
+    suspend fun deleteEvent(@Path("id") id: Long): Response<Event>
 
     @POST("events/{id}/likes")
-    suspend fun likeByIdEvent(@Path("id") id: Int): Response<Event>
+    suspend fun likeByIdEvent(@Path("id") id: Long): Response<Event>
 
     @DELETE("events/{id}/likes")
-    suspend fun dislikeByIdEvent(@Path("id") id: Int): Response<Event>
+    suspend fun dislikeByIdEvent(@Path("id") id: Long): Response<Event>
 
 
 
@@ -65,13 +68,13 @@ interface ApiService {
     suspend fun savePost(@Body post: Post): Response<Post>
 
     @DELETE("posts/{id}")
-    suspend fun deletePost(@Path("id") id: Int): Response<Post>
+    suspend fun deletePost(@Path("id") id: Long): Response<Post>
 
     @POST("posts/{id}/likes")
-    suspend fun likeByIdPost(@Path("id") id: Int): Response<Post>
+    suspend fun likeByIdPost(@Path("id") id: Long): Response<Post>
 
     @DELETE("posts/{id}/likes")
-    suspend fun dislikeByIdPost(@Path("id") id: Int): Response<Post>
+    suspend fun dislikeByIdPost(@Path("id") id: Long): Response<Post>
 
 
     @GET("my/jobs")
@@ -81,7 +84,15 @@ interface ApiService {
     suspend fun saveJob(@Body job: Job): Response<Job>
 
     @DELETE("my/jobs/{id}")
-    suspend fun deleteJob(@Path("id") id: Int): Response<Job>
+    suspend fun deleteJob(@Path("id") id: Long): Response<Job>
+
+    @FormUrlEncoded
+    @POST("users/authentication")
+    suspend fun updateUser(@Field("login") login: String, @Field("pass") pass: String): Response<Token>
+
+    @FormUrlEncoded
+    @POST("users/registration")
+    suspend fun registerUser(@Field("login") login: String, @Field("pass") pass: String, @Field("name") name: String): Response<Token>
 }
 
 interface MediaService {

@@ -14,4 +14,11 @@
     <string name="events">События</string>
     <string name="my_wall">Моя стена</string>
     <string name="menu_save">Сохранить</string>
+    <string name="sign_in">Вход</string>
+    <string name="sign_up">Регистрация</string>
+    <string name="sign_out">Выход</string>
+    <string name="login">Логин</string>
+    <string name="password">Пароль</string>
+    <string name="name">Имя</string>
+    <string name="confirm">Подтверждение пароля</string>
 </resources>

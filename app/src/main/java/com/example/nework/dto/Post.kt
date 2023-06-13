@@ -1,7 +1,7 @@
 package com.example.nework.dto
 
 data class Post(
-    val id: Int,
+    val id: Long,
     val authorId: String,
     val author: String,
     val authorAvatar: String? = null,

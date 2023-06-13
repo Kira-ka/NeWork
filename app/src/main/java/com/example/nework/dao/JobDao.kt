@@ -13,7 +13,7 @@ abstract class JobDao : BaseDao<JobEntity> {
     abstract fun getAll(): Flow<List<Job>>
 
     @Query("DELETE FROM jobs WHERE id = :id")
-    abstract suspend fun deleteJobById(id: Int)
+    abstract suspend fun deleteJobById(id: Long)
 
     @Query("UPDATE jobs SET position = :position, start = :start, finish = :finish, link = :link WHERE id = :id")
     abstract suspend fun updateJob(

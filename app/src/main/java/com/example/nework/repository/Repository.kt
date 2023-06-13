@@ -7,7 +7,7 @@ interface Repository {
     val data: Flow<List<Minimal>>
     suspend fun getAll()
 
-    suspend fun removeById(id: Int)
+    suspend fun removeById(id: Long)
 
 }
 

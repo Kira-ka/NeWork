@@ -14,11 +14,11 @@ abstract class PostDao : BaseDao<PostEntity> {
     abstract fun getPostsMinimal(): Flow<List<PostMinimal>>
 
     @Query("DELETE FROM posts WHERE id = :id")
-    abstract suspend fun deletePostById(id: Int)
+    abstract suspend fun deletePostById(id: Long)
 
     @Query("UPDATE posts SET content = :content, url = :url, type = :type  WHERE id = :id")
-    abstract suspend fun updatePostById(id: Int, content: String, url: String, type: AttachmentType)
+    abstract suspend fun updatePostById(id: Long, content: String, url: String, type: AttachmentType)
 
     @Query("UPDATE posts SET likedByMe = CASE WHEN likedByMe THEN 0 ELSE 1 END WHERE id = :id")
-    abstract suspend fun likedPostById(id: Int)
+    abstract suspend fun likedPostById(id: Long)
 }

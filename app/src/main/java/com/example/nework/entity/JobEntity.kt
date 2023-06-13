@@ -7,7 +7,7 @@ import com.example.nework.dto.Job
 @Entity(tableName = "jobs")
 data class JobEntity(
     @PrimaryKey(true)
-    val id: Int,
+    val id: Long,
     val name: String,
     val position: String,
     val start: String,

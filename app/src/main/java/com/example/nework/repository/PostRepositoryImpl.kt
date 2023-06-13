@@ -46,7 +46,7 @@ class PostRepositoryImpl @Inject constructor(
             val postWithAttachment = upload?.let {
                 upload(it)
             }?.let {
-
+                   // TODO: add support for other types
                 post.copy(attachment = Attachment(it.id, AttachmentType.IMAGE))
             }
             val response = apiService.savePost(postWithAttachment ?: post)
@@ -60,7 +60,7 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun removeById(id: Int) {
+    override suspend fun removeById(id: Long) {
         try {
             val response = apiService.deletePost(id)
             if (!response.isSuccessful) {
@@ -72,7 +72,7 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun likeById(id: Int) {
+    override suspend fun likeById(id: Long) {
         try {
             val response = apiService.likeByIdPost(id)
             if(!response.isSuccessful){
@@ -84,7 +84,7 @@ class PostRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun dislikeById(id: Int) {
+    override suspend fun dislikeById(id: Long) {
         try {
             val response = apiService.dislikeByIdPost(id)
             if(!response.isSuccessful){

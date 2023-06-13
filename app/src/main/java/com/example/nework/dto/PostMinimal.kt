@@ -3,7 +3,7 @@ package com.example.nework.dto
 import com.example.nework.enumeration.AttachmentType
 
 data class PostMinimal  (
-    override val id: Int,
+    override val id: Long,
     val authorId: String,
     val author: String,
     val authorAvatar: String? = null,

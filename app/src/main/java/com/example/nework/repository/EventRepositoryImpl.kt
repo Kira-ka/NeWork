@@ -40,7 +40,7 @@ class EventRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun likeById(id: Int) {
+    override suspend fun likeById(id: Long) {
         try {
             val response = apiService.likeByIdEvent(id)
             if(!response.isSuccessful){
@@ -52,7 +52,7 @@ class EventRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun dislikeById(id: Int) {
+    override suspend fun dislikeById(id: Long) {
         try {
             val response = apiService.dislikeByIdEvent(id)
             if(!response.isSuccessful){
@@ -64,7 +64,7 @@ class EventRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun removeById(id: Int) {
+    override suspend fun removeById(id: Long) {
         try {
             val response = apiService.deleteEvent(id)
             if (!response.isSuccessful) {
@@ -82,7 +82,7 @@ class EventRepositoryImpl @Inject constructor(
             val eventWithAttachment = upload?.let {
                 upload(it)
             }?.let {
-
+                      // TODO: add support for other types
                 event.copy(attachment = Attachment(it.id, AttachmentType.IMAGE))
             }
             val response = apiService.saveEvent(eventWithAttachment ?: event)

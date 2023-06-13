@@ -13,7 +13,7 @@ import com.example.nework.enumeration.AttachmentType
 @Entity(tableName = "posts")
 data class PostEntity(
     @PrimaryKey(true)
-    val id: Int,
+    val id: Long,
     val authorId: String,
     val author: String,
     val authorAvatar: String? = null,
